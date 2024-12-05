@@ -254,17 +254,14 @@ const Tetris = () => {
   }, [handleKeyDown]);
 
   useEffect(() => {
-    if (gameStarted) {
-      initGame();
-      if (musicEnabled) {
-        musicRef.current.play().catch((error) => {
-          console.error("Error playing music:", error);
-        });
-      } else {
-        musicRef.current.pause();
-      }
+    if (musicEnabled) {
+      musicRef.current.play().catch((error) => {
+        console.error("Error playing music:", error);
+      });
+    } else {
+      musicRef.current.pause();
     }
-  }, [initGame, gameStarted, musicEnabled]);
+  }, [musicEnabled]);
 
   // Functions for continuous movement of the piece
   const startMove = (direction) => {
@@ -325,6 +322,7 @@ const Tetris = () => {
   // Start game handler
   const handleStartGame = () => {
     setGameStarted(true);
+    initGame(); // Initialize the game when starting
   };
 
   return (
@@ -335,7 +333,6 @@ const Tetris = () => {
       {!gameStarted && (
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-12">Welcome to Tetris</h1>
-
 
           <button
             onClick={handleStartGame}
@@ -431,13 +428,6 @@ const Tetris = () => {
                 ></div>
               </div>
             </label>
-
-            {/* <button
-              onClick={initGame}
-              className="flex items-center justify-center px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition"
-            >
-              <RefreshCw className="mr-2" /> Restart Game
-            </button> */}
           </div>
         </>
       )}
