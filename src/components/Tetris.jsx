@@ -364,14 +364,14 @@ const Tetris = () => {
             )}
           </div>
 
-          <div className="flex space-x-4 mt-4">
+          <div className="flex space-x-8 mt-6">
             <button
               onMouseDown={() => startMove(-1)}
               onMouseUp={stopMove}
               onMouseLeave={stopMove}
               onTouchStart={() => startMove(-1)}
               onTouchEnd={stopMove}
-              className="p-2 bg-blue-500 rounded hover:bg-blue-600"
+              className="p-4 bg-blue-500 rounded hover:bg-blue-600"
             >
               <ChevronLeft />
             </button>
@@ -382,14 +382,14 @@ const Tetris = () => {
               onMouseLeave={stopMove}
               onTouchStart={() => startMove(1)}
               onTouchEnd={stopMove}
-              className="p-2 bg-blue-500 rounded hover:bg-blue-600"
+              className="p-4 bg-blue-500 rounded hover:bg-blue-600"
             >
               <ChevronRight />
             </button>
 
             <button
               onClick={rotate}
-              className="p-2 bg-green-500 rounded hover:bg-green-600"
+              className="p-4 bg-green-500 rounded hover:bg-green-600"
             >
               <RotateCw />
             </button>
@@ -401,7 +401,7 @@ const Tetris = () => {
               onMouseLeave={stopMove}
               onTouchStart={() => setMoveInterval(setInterval(movePieceDown, 100))}
               onTouchEnd={stopMove}
-              className="p-2 bg-red-500 rounded hover:bg-red-600"
+              className="p-4 bg-red-500 rounded hover:bg-red-600"
             >
               <ChevronDown />
             </button>
