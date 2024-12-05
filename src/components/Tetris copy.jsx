@@ -7,6 +7,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 
+// Tetromino shapes
 const SHAPES = {
   I: [
     [0, 0, 0, 0],
@@ -73,14 +74,15 @@ const Tetris = () => {
   const [gameOver, setGameOver] = useState(false);
   const [moveInterval, setMoveInterval] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
-  const [musicEnabled, setMusicEnabled] = useState(false);
-  
+  const [musicEnabled, setMusicEnabled] = useState(false); // Default to false
+
   const musicRef = useRef(null);
   const boardRef = useRef(board);
   const currentPieceRef = useRef(currentPiece);
   const currentPositionRef = useRef(currentPosition);
   const gameOverRef = useRef(gameOver);
 
+  // Generate a new random piece
   const getRandomPiece = useCallback(() => {
     const shapes = Object.keys(SHAPES);
     const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
@@ -264,7 +266,7 @@ const Tetris = () => {
   // Functions for continuous movement of the piece
   const startMove = (direction) => {
     if (moveInterval) return; // Prevent multiple intervals from being set
-    const interval = setInterval(() => moveHorizontal(direction), 100);
+    const interval = setInterval(() => moveHorizontal(direction), 100); // Adjust speed as necessary
     setMoveInterval(interval);
   };
 
@@ -331,6 +333,7 @@ const Tetris = () => {
       {!gameStarted && (
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-12">Welcome to Tetris</h1>
+
           <button
             onClick={handleStartGame}
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
@@ -368,7 +371,7 @@ const Tetris = () => {
               onMouseLeave={stopMove}
               onTouchStart={() => startMove(-1)}
               onTouchEnd={stopMove}
-              className="p-4 button-large bg-blue-500 rounded hover:bg-blue-600"
+              className="p-4 bg-blue-500 rounded hover:bg-blue-600"
             >
               <ChevronLeft />
             </button>
@@ -379,7 +382,7 @@ const Tetris = () => {
               onMouseLeave={stopMove}
               onTouchStart={() => startMove(1)}
               onTouchEnd={stopMove}
-              className="p-4 button-large bg-blue-500 rounded hover:bg-blue-600"
+              className="p-4 bg-blue-500 rounded hover:bg-blue-600"
             >
               <ChevronRight />
             </button>
@@ -404,6 +407,7 @@ const Tetris = () => {
             </button>
           </div>
 
+          {/* In-game options */}
           <div className="flex flex-col items-center mt-8">
             <label className="flex items-center cursor-pointer mb-4">
               <span className="mr-2 text-zinc-400">
