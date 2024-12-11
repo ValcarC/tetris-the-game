@@ -329,15 +329,16 @@ const Tetris = () => {
       {gameOver && <GameOverModal />}
 
       {!gameStarted && (
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white mb-12">Welcome to Tetris</h1>
-          <button
-            onClick={handleStartGame}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-          >
-            Start Game
-          </button>
-        </div>
+       <div className="text-center mb-12">
+<h1 className="text-5xl font-bold text-zinc-100 mb-12 transform transition animate-rotate-smooth">Welcome to Tetris</h1>
+
+       <button
+         onClick={handleStartGame}
+         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition hover:animate-pulse"
+       >
+         Start Game
+       </button>
+     </div>
       )}
 
       {gameStarted && (
@@ -368,7 +369,7 @@ const Tetris = () => {
               onMouseLeave={stopMove}
               onTouchStart={() => startMove(-1)}
               onTouchEnd={stopMove}
-              className="p-4 button-large bg-blue-500 rounded hover:bg-blue-600"
+              className="p-4 button-large bg-blue-500 rounded hover:bg-blue-600 lg:hidden"
             >
               <ChevronLeft />
             </button>
@@ -379,14 +380,14 @@ const Tetris = () => {
               onMouseLeave={stopMove}
               onTouchStart={() => startMove(1)}
               onTouchEnd={stopMove}
-              className="p-4 button-large bg-blue-500 rounded hover:bg-blue-600"
+              className="p-4 button-large bg-blue-500 rounded hover:bg-blue-600 lg:hidden"
             >
               <ChevronRight />
             </button>
 
             <button
               onClick={rotate}
-              className="p-4 bg-green-500 rounded hover:bg-green-600"
+              className="p-4 bg-green-500 rounded hover:bg-green-600 lg:hidden"
             >
               <RotateCw />
             </button>
@@ -398,7 +399,7 @@ const Tetris = () => {
               onMouseLeave={stopMove}
               onTouchStart={() => setMoveInterval(setInterval(movePieceDown, 100))}
               onTouchEnd={stopMove}
-              className="p-4 bg-red-500 rounded hover:bg-red-600"
+              className="p-4 bg-red-500 rounded hover:bg-red-600 lg:hidden"
             >
               <ChevronDown />
             </button>
